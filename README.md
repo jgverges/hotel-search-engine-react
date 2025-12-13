@@ -1,82 +1,82 @@
-# 🏨 Buscador de Hoteles - eBooking
+# 🏨 Hotel Search Engine - eBooking
 
-Aplicación web moderna para búsqueda de hoteles desarrollada con React 18, TypeScript y Tailwind CSS.
+Modern web application for hotel search developed with React 18, TypeScript, and Tailwind CSS.
 
-## 🚀 Características
+## 🚀 Features
 
-- 🔍 Búsqueda de hoteles con autocompletado (Combobox pattern)
-- 📅 Selección de fechas de entrada y salida
-- 👥 Gestión de número de huéspedes
-- 🏨 Visualización de resultados con tarjetas de hoteles
-- 📱 Diseño responsive
-- ⚡ Optimizado con React Query para gestión de estado del servidor
+- 🔍 Hotel search with autocomplete (Combobox pattern)
+- 📅 Check-in and check-out date selection
+- 👥 Guest management
+- 🏨 Hotel results displayed with cards
+- 📱 Responsive design
+- ⚡ Optimized with React Query for server state management
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
-- **React 18** - Biblioteca de UI
-- **TypeScript** - Tipado estático
-- **Vite** - Build tool y dev server
-- **Tailwind CSS** - Framework de estilos
-- **React Router DOM** - Enrutamiento
-- **TanStack Query** - Gestión de estado del servidor
-- **Lucide React** - Iconos
+- **React 18** - UI library
+- **TypeScript** - Static typing
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling framework
+- **React Router DOM** - Routing
+- **TanStack Query** - Server state management
+- **Lucide React** - Icons
 - **Vitest** - Testing framework
 
-## 📦 Instalación
+## 📦 Installation
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Iniciar servidor de desarrollo
+# Start development server
 npm run dev
 
-# Compilar para producción
+# Build for production
 npm run build
 
-# Ejecutar tests
+# Run tests
 npm test
 ```
 
-## 🏗️ Estructura del Proyecto
+## 🏗️ Project Structure
 
 ```
 src/
-├── api/              # Cliente API y servicios
-├── components/        # Componentes UI reutilizables
-├── features/          # Features organizadas por dominio
-│   ├── search/       # Feature de búsqueda
-│   └── hotels/       # Feature de hoteles
-├── lib/               # Utilidades y helpers
-├── pages/            # Páginas de la aplicación
+├── api/              # API client and services
+├── components/        # Reusable UI components
+├── features/          # Features organized by domain
+│   ├── search/       # Search feature
+│   └── hotels/       # Hotels feature
+├── lib/               # Utilities and helpers
+├── pages/            # Application pages
 ├── providers/         # Context providers
-└── test/             # Configuración de tests
+└── test/             # Test configuration
 ```
 
-## 🎨 Arquitectura
+## 🎨 Architecture
 
-El proyecto sigue el patrón **Feature-Sliced Design** para una organización escalable y mantenible del código.
+The project follows the **Feature-Sliced Design** pattern for scalable and maintainable code organization.
 
-## 📝 Scripts Disponibles
+## 📝 Available Scripts
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Compila para producción
-- `npm run preview` - Previsualiza el build de producción
-- `npm run test` - Ejecuta los tests
-- `npm run lint` - Ejecuta el linter
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run lint` - Run linter
 
-## 🌐 Uso
+## 🌐 Usage
 
-1. Inicia la aplicación con `npm run dev`
-2. Busca hoteles escribiendo al menos 3 caracteres en el campo de destino
-3. Selecciona fechas y número de huéspedes
-4. Haz clic en "Buscar Hoteles" para ver los resultados
-5. Haz clic en cualquier hotel para ver sus detalles
+1. Start the application with `npm run dev`
+2. Search for hotels by typing at least 3 characters in the destination field
+3. Select dates and number of guests
+4. Click "Search Hotels" to view results
+5. Click on any hotel to see its details
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto es privado.
+This project is private.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Desarrollado como proyecto de candidatura para eBooking.
+Developed as a candidate project for eBooking.

@@ -1,73 +1,73 @@
-# 🚀 Guía de Optimización de Cursor
+# 🚀 Cursor Optimization Guide
 
-## Problemas de Lentitud - Soluciones
+## Performance Issues - Solutions
 
-### 1. **Configuración de Archivos a Ignorar**
+### 1. **File Ignore Configuration**
 
-Ya está configurado en `.vscode/settings.json`:
+Already configured in `.vscode/settings.json`:
 
-- `node_modules` - No se indexa
-- `dist` - No se indexa
-- `.vite` - No se indexa
+- `node_modules` - Not indexed
+- `dist` - Not indexed
+- `.vite` - Not indexed
 
-### 2. **Extensiones que Ralentizan**
+### 2. **Extensions that Slow Down**
 
-Desactiva extensiones innecesarias:
+Disable unnecessary extensions:
 
-- Extensiones de Git pesadas
-- Extensiones de análisis de código múltiples
-- Extensiones de formateo duplicadas
+- Heavy Git extensions
+- Multiple code analysis extensions
+- Duplicate formatting extensions
 
-### 3. **Memoria TypeScript**
+### 3. **TypeScript Memory**
 
-Ya configurado: `maxTsServerMemory: 4096`
-Si tienes 8GB+ RAM, puedes aumentar a 6144
+Already configured: `maxTsServerMemory: 4096`
+If you have 8GB+ RAM, you can increase to 6144
 
-### 4. **Cerrar Archivos No Usados**
+### 4. **Close Unused Files**
 
-- Cierra pestañas que no uses
-- Usa `Ctrl+K W` para cerrar todas las pestañas
+- Close tabs you don't use
+- Use `Ctrl+K W` to close all tabs
 
-### 5. **Reiniciar Cursor**
+### 5. **Restart Cursor**
 
-Si sigue lento:
+If it's still slow:
 
 - `Ctrl+Shift+P` → "Reload Window"
-- O cierra y vuelve a abrir Cursor
+- Or close and reopen Cursor
 
-### 6. **Desactivar Características Pesadas**
+### 6. **Disable Heavy Features**
 
-En Settings:
+In Settings:
 
-- Desactiva "Editor: Semantic Highlighting" si no lo necesitas
-- Desactiva "Editor: Inlay Hints" (ya desactivado)
+- Disable "Editor: Semantic Highlighting" if you don't need it
+- Disable "Editor: Inlay Hints" (already disabled)
 
-### 7. **Usar Workspace Settings**
+### 7. **Use Workspace Settings**
 
-Las configuraciones están en `.vscode/settings.json` - solo afectan este proyecto
+Configurations are in `.vscode/settings.json` - only affects this project
 
-## ⚡ Mejoras Aplicadas
+## ⚡ Applied Improvements
 
-✅ Archivos ignorados en búsqueda/indexación
-✅ Memoria TypeScript optimizada
-✅ Sugerencias optimizadas
-✅ Watchers de archivos optimizados
+✅ Files ignored in search/indexing
+✅ TypeScript memory optimized
+✅ Suggestions optimized
+✅ File watchers optimized
 
-## 🔧 Si Sigue Lento
+## 🔧 If It's Still Slow
 
-1. **Revisa tu PC:**
+1. **Check your PC:**
 
-   - Mínimo: 8GB RAM, SSD recomendado
-   - Cursor funciona bien con 4GB RAM, pero 8GB+ es ideal
+   - Minimum: 8GB RAM, SSD recommended
+   - Cursor works well with 4GB RAM, but 8GB+ is ideal
 
-2. **Cierra otras aplicaciones:**
+2. **Close other applications:**
 
-   - Navegadores con muchas pestañas
-   - Otras IDEs abiertas
-   - Aplicaciones pesadas
+   - Browsers with many tabs
+   - Other IDEs open
+   - Heavy applications
 
-3. **Reinicia Cursor completamente**
+3. **Restart Cursor completely**
 
-4. **Verifica extensiones:**
-   - Desactiva todas las extensiones
-   - Activa una por una para encontrar la problemática
+4. **Check extensions:**
+   - Disable all extensions
+   - Enable one by one to find the problematic one
