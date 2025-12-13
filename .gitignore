@@ -39,3 +39,6 @@ coverage
 # Temporary files
 *.tmp
 .cache
+
+# Documentation (exclude from commits)
+docs/

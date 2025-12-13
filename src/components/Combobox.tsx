@@ -181,7 +181,7 @@ export function Combobox({
                 )}
               >
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 text-gray-400 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate">{option.label}</div>
                     {option.sublabel && (

@@ -28,7 +28,9 @@ export function SearchResultsPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
-            {destination ? `Hoteles en ${destination}` : 'Resultados de búsqueda'}
+            {destination 
+              ? `Hoteles en ${destination.split(',')[0].trim()}` 
+              : 'Resultados de búsqueda'}
           </h2>
           {data && (
             <p className="text-gray-600 mt-1">

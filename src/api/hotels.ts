@@ -1,4 +1,5 @@
 // import { axiosClient } from '@/lib/axios'; // Reserved for future API integration
+import { simpleHotels } from '@/lib/simpleHotelData';
 
 export interface Hotel {
   id: string;
@@ -14,14 +15,19 @@ export interface Hotel {
   available: boolean;
 }
 
+/**
+ * Parámetros de búsqueda simplificados
+ * FASE 1: Solo 3 filtros básicos
+ * - destination: Ciudad de destino
+ * - checkIn: Fecha de entrada
+ * - checkOut: Fecha de salida
+ * - guests: Número de personas
+ */
 export interface SearchParams {
   destination?: string;
   checkIn?: string;
   checkOut?: string;
   guests?: number;
-  minPrice?: number;
-  maxPrice?: number;
-  rating?: number;
 }
 
 export interface SearchResponse {
@@ -31,118 +37,103 @@ export interface SearchResponse {
   limit: number;
 }
 
-// Mock data for development
-const mockHotels: Hotel[] = [
-  {
-    id: "1",
-    name: "Grand Hotel Barcelona",
-    location: "Las Ramblas",
-    city: "Barcelona",
-    country: "Spain",
-    price: 120,
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
-    description:
-      "Luxury hotel in the heart of Barcelona with stunning city views.",
-    amenities: ["WiFi", "Pool", "Spa", "Restaurant", "Parking"],
-    available: true,
-  },
-  {
-    id: "2",
-    name: "Seaside Resort",
-    location: "Beachfront",
-    city: "Valencia",
-    country: "Spain",
-    price: 95,
-    rating: 4.2,
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
-    description:
-      "Beautiful beachfront resort with direct access to the Mediterranean.",
-    amenities: ["WiFi", "Pool", "Beach Access", "Restaurant", "Gym"],
-    available: true,
-  },
-  {
-    id: "3",
-    name: "Mountain View Lodge",
-    location: "Sierra Nevada",
-    city: "Granada",
-    country: "Spain",
-    price: 75,
-    rating: 4.0,
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
-    description:
-      "Cozy lodge with breathtaking mountain views and hiking trails.",
-    amenities: ["WiFi", "Restaurant", "Parking", "Hiking Trails"],
-    available: true,
-  },
-  {
-    id: "4",
-    name: "City Center Hotel",
-    location: "Downtown",
-    city: "Madrid",
-    country: "Spain",
-    price: 110,
-    rating: 4.3,
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800",
-    description:
-      "Modern hotel in the heart of Madrid, close to all major attractions.",
-    amenities: ["WiFi", "Gym", "Restaurant", "Parking", "Business Center"],
-    available: true,
-  },
-  {
-    id: "5",
-    name: "Historic Palace Hotel",
-    location: "Old Town",
-    city: "Seville",
-    country: "Spain",
-    price: 130,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
-    description: "Elegant historic palace converted into a luxury hotel.",
-    amenities: ["WiFi", "Pool", "Spa", "Restaurant", "Historic Tours"],
-    available: true,
-  },
-];
+/**
+ * Datos simples de hoteles para aprendizaje
+ * 60 hoteles en diferentes ciudades españolas
+ * Suficiente para demostrar filtros sin complejidad innecesaria
+ */
+const hotels = simpleHotels;
 
+/**
+ * API simplificada para FASE 1
+ * Enfoque en aprendizaje: 3 filtros básicos bien implementados
+ */
 export const hotelsApi = {
+  /**
+   * Busca hoteles con los 3 filtros básicos:
+   * - destination: Ciudad (búsqueda por nombre de ciudad)
+   * - checkIn/checkOut: Fechas (validación básica)
+   * - guests: Número de personas (validación básica)
+   */
   search: async (params: SearchParams): Promise<SearchResponse> => {
     // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
-    let filteredHotels = [...mockHotels];
+    let filteredHotels = [...hotels];
 
-    // Filter by destination
+    // FILTRO 1: Ciudad (destination)
+    // Según ECOMERCE_CARACTERISTICAS.md: filtra solo por ciudad, personas y fechas
     if (params.destination) {
-      const searchTerm = params.destination.toLowerCase();
+      // Extraer solo la ciudad si viene en formato "ciudad, país"
+      // Esto permite que funcione tanto con selección del combobox como con texto libre
+      let searchTerm = params.destination.toLowerCase().trim();
+      const cityMatch = searchTerm.match(/^([^,]+)/);
+      if (cityMatch) {
+        searchTerm = cityMatch[1].trim();
+      }
+      
       filteredHotels = filteredHotels.filter(
-        (hotel) =>
-          hotel.city.toLowerCase().includes(searchTerm) ||
-          hotel.location.toLowerCase().includes(searchTerm) ||
-          hotel.name.toLowerCase().includes(searchTerm)
+        (hotel) => {
+          const hotelCity = hotel.city.toLowerCase();
+          const hotelLocation = hotel.location.toLowerCase();
+          const hotelName = hotel.name.toLowerCase();
+          
+          // Búsqueda flexible: el término puede estar en la ciudad, ubicación o nombre
+          // Y viceversa: la ciudad puede estar en el término (para búsquedas parciales)
+          return (
+            hotelCity === searchTerm ||
+            hotelCity.includes(searchTerm) ||
+            searchTerm.includes(hotelCity) ||
+            hotelLocation.includes(searchTerm) ||
+            hotelName.includes(searchTerm)
+          );
+        }
       );
     }
 
-    // Filter by price range
-    if (params.minPrice !== undefined) {
-      filteredHotels = filteredHotels.filter(
-        (hotel) => hotel.price >= params.minPrice!
-      );
+    // FILTRO 2: Fechas (checkIn, checkOut)
+    // Según ECOMERCE_CARACTERISTICAS.md: fechas son opcionales ("si es posible ahora por fechas")
+    // Validación básica: verificar que las fechas sean válidas
+    if (params.checkIn && params.checkOut) {
+      const checkInDate = new Date(params.checkIn);
+      const checkOutDate = new Date(params.checkOut);
+      
+      // Validar que check-out sea después de check-in
+      if (checkOutDate <= checkInDate) {
+        // Si las fechas son inválidas, retornar sin hoteles
+        return {
+          hotels: [],
+          total: 0,
+          page: 1,
+          limit: 10,
+        };
+      }
+      
+      // Nota: En una app real, aquí se verificaría disponibilidad real por fechas
+      // Por ahora, solo filtramos por disponibilidad general del hotel
+      // Si el hotel no está disponible, no se muestra
+      filteredHotels = filteredHotels.filter((hotel) => hotel.available);
     }
-    if (params.maxPrice !== undefined) {
-      filteredHotels = filteredHotels.filter(
-        (hotel) => hotel.price <= params.maxPrice!
-      );
-    }
+    // Si no hay fechas, no filtramos por disponibilidad (según especificaciones)
 
-    // Filter by rating
-    if (params.rating !== undefined) {
-      filteredHotels = filteredHotels.filter(
-        (hotel) => hotel.rating >= params.rating!
-      );
+    // FILTRO 3: Número de personas (guests)
+    // Según ECOMERCE_CARACTERISTICAS.md: filtra por personas
+    // Validación básica: verificar que sea un número válido
+    if (params.guests !== undefined && params.guests !== null) {
+      // Validar rango razonable de huéspedes
+      if (params.guests < 1 || params.guests > 20) {
+        // Si el número de huéspedes es inválido, retornar sin hoteles
+        return {
+          hotels: [],
+          total: 0,
+          page: 1,
+          limit: 10,
+        };
+      }
+      // Nota: En una app real, aquí se verificaría capacidad de habitaciones
+      // Por ahora, todos los hoteles aceptan cualquier número de huéspedes válido
+      // No filtramos hoteles por número de personas, solo validamos el parámetro
     }
-
-    // Filter by availability
-    filteredHotels = filteredHotels.filter((hotel) => hotel.available);
 
     return {
       hotels: filteredHotels,
@@ -152,10 +143,13 @@ export const hotelsApi = {
     };
   },
 
+  /**
+   * Obtiene un hotel por ID
+   */
   getById: async (id: string): Promise<Hotel> => {
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
-    const hotel = mockHotels.find((h) => h.id === id);
+    const hotel = hotels.find((h) => h.id === id);
     if (!hotel) {
       throw new Error("Hotel not found");
     }
