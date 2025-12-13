@@ -1,0 +1,7 @@
+# Optimizaciones para Cursor
+
+# Desactivar características que pueden ralentizar
+- Usar indexación ligera
+- Limitar análisis de archivos grandes
+- Desactivar sugerencias innecesarias
+
