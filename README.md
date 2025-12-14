@@ -52,6 +52,12 @@ The project follows the **Feature-Sliced Design** pattern for scalable and maint
 - `npm run test` - Run tests
 - `npm run lint` - Run linter
 
+## Lighthouse
+
+The project includes Lighthouse configuration for performance, accessibility, best practices, and SEO audits. 
+
+Although the `reports/lighthouse` directory has been excluded from git tracking, the original first report `reports/lighthouse/homepage.html` has been kept in the repository to demonstrate that all metric values have been achieved in green (passing all audits).
+
 ## Usage
 
 1. Start the app with `npm run dev`
