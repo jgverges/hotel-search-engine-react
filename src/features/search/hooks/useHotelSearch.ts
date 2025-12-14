@@ -9,6 +9,6 @@ export function useHotelSearch(params: SearchParams) {
   return useQuery<SearchResponse>({
     queryKey: ["hotels", "search", params],
     queryFn: () => hotelsApi.search(params),
-    enabled: Boolean(params.destination),
+    enabled: Boolean(params.destination && params.destination.length >= 3),
   });
 }

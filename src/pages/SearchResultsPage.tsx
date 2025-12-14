@@ -6,15 +6,9 @@ import { SearchBar } from '@/features/search/components/SearchBar';
 export function SearchResultsPage() {
   const [searchParams] = useSearchParams();
   const destination = searchParams.get('destination') || '';
-  const checkIn = searchParams.get('checkIn') || undefined;
-  const checkOut = searchParams.get('checkOut') || undefined;
-  const guests = searchParams.get('guests') ? Number(searchParams.get('guests')) : undefined;
 
   const { data, isLoading } = useHotelSearch({
     destination,
-    checkIn,
-    checkOut,
-    guests,
   });
 
   return (
@@ -29,7 +23,7 @@ export function SearchResultsPage() {
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
             {destination 
-              ? `Hoteles en ${destination.split(',')[0].trim()}` 
+              ? `Hoteles en ${destination}` 
               : 'Resultados de búsqueda'}
           </h2>
           {data && (
@@ -44,4 +38,3 @@ export function SearchResultsPage() {
     </div>
   );
 }
-
