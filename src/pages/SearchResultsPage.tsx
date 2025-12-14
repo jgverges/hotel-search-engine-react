@@ -23,12 +23,12 @@ export function SearchResultsPage() {
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
             {destination 
-              ? `Hoteles en ${destination}` 
-              : 'Resultados de búsqueda'}
+              ? `Hotels in ${destination}` 
+              : 'Search results'}
           </h2>
           {data && (
             <p className="text-gray-600 mt-1">
-              {data.total} {data.total === 1 ? 'hotel encontrado' : 'hoteles encontrados'}
+              {data.total} {data.total === 1 ? 'hotel found' : 'hotels found'}
             </p>
           )}
         </div>

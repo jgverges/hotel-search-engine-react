@@ -48,7 +48,7 @@ describe('Search Flow Integration', () => {
     const user = userEvent.setup();
     renderWithProviders(<SearchBar />);
 
-    const input = screen.getByPlaceholderText(/buscar ciudad/i);
+    const input = screen.getByPlaceholderText(/search city/i);
     await user.type(input, 'Bar');
 
     await waitFor(() => {
@@ -88,7 +88,7 @@ describe('Search Flow Integration', () => {
     const user = userEvent.setup();
     renderWithQueryClient(<RouterProvider router={router} />);
 
-    const input = screen.getByPlaceholderText(/buscar ciudad/i);
+    const input = screen.getByPlaceholderText(/search city/i);
     await user.type(input, 'Bar');
 
     await waitFor(() => {
@@ -140,10 +140,10 @@ describe('Search Flow Integration', () => {
     const user = userEvent.setup();
     renderWithQueryClient(<RouterProvider router={router} />);
 
-    const input = screen.getByPlaceholderText(/buscar ciudad/i);
+    const input = screen.getByPlaceholderText(/search city/i);
     await user.type(input, 'Barcelona');
     
-    const searchButton = screen.getByRole('button', { name: /buscar/i });
+    const searchButton = screen.getByRole('button', { name: /search/i });
     await user.click(searchButton);
 
     await waitFor(() => {

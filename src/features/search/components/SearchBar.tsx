@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
 import { Combobox, type ComboboxOption } from "@/components/Combobox";
 import Button from "@/components/Button";
@@ -47,19 +47,19 @@ export function SearchBar() {
               value={destination}
               onChange={setDestination}
               onSelect={handleDestinationSelect}
-              placeholder="Buscar ciudad (mínimo 3 caracteres)"
+              placeholder="Search city (minimum 3 characters)"
               required
               label={
                 <>
                   <Search className="inline w-4 h-4 mr-1" />
-                  Ciudad
+                  City
                 </>
               }
             />
           </div>
           <Button type="submit" size="lg" className="px-8">
             <Search className="w-4 h-4 mr-2" />
-            Buscar
+            Search
           </Button>
         </div>
       </div>

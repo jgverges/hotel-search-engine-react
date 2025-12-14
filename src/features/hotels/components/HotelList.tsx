@@ -27,8 +27,8 @@ export function HotelList({ hotels, isLoading }: HotelListProps) {
   if (hotels.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">No se encontraron hoteles</p>
-        <p className="text-gray-400 text-sm mt-2">Intenta con otros criterios de búsqueda</p>
+        <p className="text-gray-500 text-lg">No hotels found</p>
+        <p className="text-gray-400 text-sm mt-2">Try different search criteria</p>
       </div>
     );
   }

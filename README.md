@@ -1,28 +1,15 @@
-# 🏨 Hotel Search Engine - eBooking
+# Hotel Search Engine 
 
 Modern web application for hotel search developed with React 18, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## Features
 
-- 🔍 Hotel search with autocomplete (Combobox pattern)
-- 📅 Check-in and check-out date selection
-- 👥 Guest management
-- 🏨 Hotel results displayed with cards
-- 📱 Responsive design
-- ⚡ Optimized with React Query for server state management
+- Hotel search with autocomplete (Combobox pattern)
+- Hotel results displayed with cards
+- Responsive design
+- Optimized with React Query for server state management
 
-## 🛠️ Tech Stack
-
-- **React 18** - UI library
-- **TypeScript** - Static typing
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Styling framework
-- **React Router DOM** - Routing
-- **TanStack Query** - Server state management
-- **Lucide React** - Icons
-- **Vitest** - Testing framework
-
-## 📦 Installation
+##  Installation
 
 ```bash
 # Install dependencies
@@ -38,7 +25,7 @@ npm run build
 npm test
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/
@@ -53,11 +40,11 @@ src/
 └── test/             # Test configuration
 ```
 
-## 🎨 Architecture
+##  Architecture
 
 The project follows the **Feature-Sliced Design** pattern for scalable and maintainable code organization.
 
-## 📝 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -65,18 +52,12 @@ The project follows the **Feature-Sliced Design** pattern for scalable and maint
 - `npm run test` - Run tests
 - `npm run lint` - Run linter
 
-## 🌐 Usage
+## Usage
 
-1. Start the application with `npm run dev`
-2. Search for hotels by typing at least 3 characters in the destination field
-3. Select dates and number of guests
-4. Click "Search Hotels" to view results
-5. Click on any hotel to see its details
+1. Start the app with `npm run dev`
+2. Open your browser at [http://localhost:5173](http://localhost:5173)
+3. Search hotels by typing at least 3 characters
+5. Click "Search Hotels" to view results
+6. Click a hotel to see details
 
-## 📄 License
 
-This project is private.
-
-## 👨‍💻 Author
-
-Developed as a candidate project for eBooking.

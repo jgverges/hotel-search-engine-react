@@ -12,7 +12,7 @@ export function HotelDetailsPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Cargando hotel...</p>
+          <p className="text-gray-600">Loading hotel...</p>
         </div>
       </div>
     );
@@ -40,7 +40,7 @@ export function HotelDetailsPage() {
             className="inline-flex items-center text-blue-600 hover:text-blue-700"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver a resultados
+            Back to results
           </Link>
         </div>
       </div>
@@ -63,13 +63,13 @@ export function HotelDetailsPage() {
               <p className="text-gray-600 mb-4">{hotel.city}</p>
               <p className="text-4xl font-bold text-blue-600">
                 €{hotel.price}
-                <span className="text-lg text-gray-500 font-normal"> por noche</span>
+                <span className="text-lg text-gray-500 font-normal"> per night</span>
               </p>
             </div>
 
             <div className="border-t border-b py-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">
-                Descripción
+                Description
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 {hotel.description}

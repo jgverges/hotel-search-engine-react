@@ -24,7 +24,7 @@ export function HotelCard({ hotel }: HotelCardProps) {
         <p className="text-gray-600 text-sm mb-2">{hotel.city}</p>
         <div className="text-right">
           <p className="text-2xl font-bold text-blue-600">€{hotel.price}</p>
-          <p className="text-xs text-gray-500">por noche</p>
+          <p className="text-xs text-gray-500">per night</p>
         </div>
       </div>
     </Link>
