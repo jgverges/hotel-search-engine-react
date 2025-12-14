@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /search?*
+Disallow: /hotels/*
+
+Sitemap: https://stayfinder.com/sitemap.xml

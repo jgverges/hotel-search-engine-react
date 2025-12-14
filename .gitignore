@@ -42,3 +42,8 @@ coverage
 
 # Documentation (exclude from commits)
 docs/
+
+.vscode/
+.cursorrules
+.history
+
