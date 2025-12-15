@@ -48,6 +48,11 @@ describe('Search Flow Integration', () => {
     const user = userEvent.setup();
     renderWithProviders(<SearchBar />);
 
+    // Wait for cities to load
+    await waitFor(() => {
+      expect(hotelsApi.getAllCities).toHaveBeenCalled();
+    });
+
     const input = screen.getByPlaceholderText(/search city/i);
     await user.type(input, 'Bar');
 

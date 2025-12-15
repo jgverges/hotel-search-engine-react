@@ -1,5 +1,6 @@
 import type { Hotel } from '@/api/hotels';
 
+// MOck data
 export const simpleHotels: Hotel[] = [
   { id: '1', name: 'Grand Hotel Barcelona', city: 'Barcelona', price: 120, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800', description: 'Luxury hotel in the heart of Barcelona with stunning city views.' },
   { id: '2', name: 'Barcelona Beach Resort', city: 'Barcelona', price: 95, image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800', description: 'Beachfront hotel with direct access to the Mediterranean.' },

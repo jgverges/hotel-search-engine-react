@@ -1,11 +1,38 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useHotel } from "@/features/hotels/hooks/useHotel";
 import Button from "@/components/Button";
 
 export function HotelDetailsPage() {
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
   const { data: hotel, isLoading } = useHotel(id!);
+
+  // Get destination from previous location state or referrer
+  const getBackUrl = () => {
+    // Try to get destination from location state (if navigated from search page)
+    const state = location.state as { destination?: string } | null;
+    if (state?.destination) {
+      return `/search?destination=${encodeURIComponent(state.destination)}`;
+    }
+    
+    // Try to get from referrer URL
+    const referrer = document.referrer;
+    if (referrer) {
+      try {
+        const referrerUrl = new URL(referrer);
+        const destination = referrerUrl.searchParams.get('destination');
+        if (destination) {
+          return `/search?destination=${encodeURIComponent(destination)}`;
+        }
+      } catch (e) {
+        console.log('error',e)
+      }
+    }
+    
+
+    return '/search';
+  };
 
   if (isLoading) {
     return (
@@ -36,7 +63,7 @@ export function HotelDetailsPage() {
       <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <Link
-            to="/search"
+            to={getBackUrl()}
             className="inline-flex items-center text-blue-600 hover:text-blue-700"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

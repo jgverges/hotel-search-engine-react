@@ -1,13 +1,22 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Search } from "lucide-react";
 import { Combobox, type ComboboxOption } from "@/components/Combobox";
 import Button from "@/components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { hotelsApi } from "@/api/hotels";
 
 export function SearchBar() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [destination, setDestination] = useState("");
+
+  // Initialize destination from URL params
+  useEffect(() => {
+    const urlDestination = searchParams.get('destination') || '';
+    if (urlDestination) {
+      setDestination(urlDestination);
+    }
+  }, [searchParams]);
 
   const destinationOptions: ComboboxOption[] = useMemo(() => {
     const cities = hotelsApi.getAllCities();

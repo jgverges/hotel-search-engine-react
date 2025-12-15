@@ -231,4 +231,5 @@ docs/
 
 .vscode/
 .cursorrules
+.cursorignore
 .history

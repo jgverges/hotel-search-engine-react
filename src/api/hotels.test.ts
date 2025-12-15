@@ -10,13 +10,6 @@ describe('hotelsApi.search', () => {
     )).toBe(true);
   });
   
-  it('is efficient with searches', async () => {
-    const start = performance.now();
-    await hotelsApi.search({ destination: 'Barcelona' });
-    const duration = performance.now() - start;
-    expect(duration).toBeLessThan(100);
-  });
-  
   it('returns empty with less than 3 characters', async () => {
     const result = await hotelsApi.search({ destination: 'Ba' });
     expect(result.hotels).toEqual([]);

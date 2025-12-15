@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:lighthouse": "vitest run src/__tests__/lighthouse.threshold.test.ts",
     "lighthouse": "lighthouse http://localhost:4173 --chrome-flags=\"--headless=new --disable-gpu --disable-dev-shm-usage\" --config-path=./lighthouse.config.js --output=html --output-path=./reports/lighthouse/homepage.html --view",
     "lighthouse:json": "lighthouse http://localhost:4173 --chrome-flags=\"--headless=new --disable-gpu --disable-dev-shm-usage\" --config-path=./lighthouse.config.js --output=json --output-path=./reports/lighthouse/homepage.json",
     "lighthouse:all": "lighthouse http://localhost:4173 --chrome-flags=\"--headless=new --disable-gpu --disable-dev-shm-usage\" --config-path=./lighthouse.config.js --output=html,json --output-path=./reports/lighthouse/homepage"
@@ -36,6 +37,7 @@
     "@vitejs/plugin-react": "^5.1.1",
     "@vitest/ui": "^4.0.15",
     "autoprefixer": "^10.4.22",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",

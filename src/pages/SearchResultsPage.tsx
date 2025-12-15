@@ -27,9 +27,16 @@ export function SearchResultsPage() {
               : 'Search results'}
           </h2>
           {data && (
-            <p className="text-gray-600 mt-1">
-              {data.total} {data.total === 1 ? 'hotel found' : 'hotels found'}
-            </p>
+            <>
+              <p className="text-gray-600 mt-1">
+                {data.total} {data.total === 1 ? 'hotel found' : 'hotels found'}
+              </p>
+              {data.total > 0 && (
+                <p className="text-sm text-gray-500">
+                  Showing {Math.min(data.hotels.length, data.limit)} of {data.total} results
+                </p>
+              )}
+            </>
           )}
         </div>
 

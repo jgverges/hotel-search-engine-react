@@ -33,6 +33,8 @@ function buildCityIndex(hotels: Hotel[]) {
   });
 }
 
+buildCityIndex(simpleHotels);
+
 function searchByCity(term: string): Hotel[] {
   const normalized = term.toLowerCase().trim();
   if (normalized.length < 3) return [];
@@ -46,7 +48,11 @@ function searchByCity(term: string): Hotel[] {
   return results;
 }
 
-buildCityIndex(simpleHotels);
+
+const simulateNetworkDelay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+// FAKE API for development purposes
 
 export const hotelsApi = {
   getAllCities: (): string[] => {
@@ -56,7 +62,7 @@ export const hotelsApi = {
   },
   
   search: async (params: SearchParams): Promise<SearchResponse> => {
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await simulateNetworkDelay(random(200, 600));
     
     if (!params.destination || params.destination.length < 3) {
       return { hotels: [], total: 0, page: 1, limit: 10 };
@@ -72,7 +78,7 @@ export const hotelsApi = {
   },
   
   getById: async (id: string): Promise<Hotel> => {
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await simulateNetworkDelay(random(200, 600));
     
     const allHotels = Array.from(cityIndex.values()).flat();
     const hotel = allHotels.find((h) => h.id === id);

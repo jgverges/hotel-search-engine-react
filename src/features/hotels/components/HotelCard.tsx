@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { type Hotel } from '@/api/hotels';
 
 interface HotelCardProps {
@@ -6,9 +6,15 @@ interface HotelCardProps {
 }
 
 export function HotelCard({ hotel }: HotelCardProps) {
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const destination = searchParams.get('destination') || '';
+
   return (
     <Link
       to={`/hotels/${hotel.id}`}
+      state={{ destination }}
       className="block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden"
     >
       <div className="relative h-48 overflow-hidden">
