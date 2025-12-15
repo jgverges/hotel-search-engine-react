@@ -56,7 +56,7 @@ export function SearchBar() {
               value={destination}
               onChange={setDestination}
               onSelect={handleDestinationSelect}
-              placeholder="Search city (minimum 3 characters)"
+              placeholder="Search city (min. 3 characters)"
               required
               label={
                 <>
@@ -65,6 +65,9 @@ export function SearchBar() {
                 </>
               }
             />
+            <p className="mt-2 text-xs text-gray-500">
+              Demo cities: Barcelona · Madrid · Valencia · Granada · Seville · Bilbao · Málaga · Palma
+            </p>
           </div>
           <Button type="submit" size="lg" className="px-8">
             <Search className="w-4 h-4 mr-2" />
